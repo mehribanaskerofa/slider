@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vertical Slider Örneği</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    .slider-container {
+      width: 400px;
+      height: 400px;
+      display: flex;
+      align-items: center;
+    }
+
+    .quote-container {
+      flex-grow: 1;
+      padding-right: 20px;
+      overflow: auto;
+      height: 400px;
+    }
+
+    .quote-scroll {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .quote {
+      font-size: 20px;
+      margin-bottom: 10px;
+      transition: font-size 0.5s;
+    }
+
+    .swiper-container {
+      width: 400px;
+      height: 400px;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider-container">
+    <div class="quote-container">
+      <div class="quote-scroll">
+        <p class="quote">Bu birinci alıntıdır.</p>
+        <p class="quote">Bu ikinci alıntıdır.</p>
+        <p class="quote">Bu üçüncü alıntıdır.</p>
+      </div>
+    </div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp" alt="Resim 1">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp" alt="Resim 2">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp" alt="Resim 3">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      direction: 'vertical',
+      slidesPerView: 1,
+      spaceBetween: 30,
+      mousewheel: true,
+      autoHeight: true,
+    });
+
+    const quoteContainer = document.querySelector('.quote-scroll');
+    const quotes = document.querySelectorAll('.quote');
+
+    quoteContainer.addEventListener('scroll', function () {
+      quotes.forEach((quote) => {
+        const scrollPercentage = quoteContainer.scrollTop / (quoteContainer.scrollHeight - quoteContainer.clientHeight);
+        const fontSize = 20 + scrollPercentage * 10; // Sözlerin büyüklüğünü ayarlamak için ölçeklendirme yapabilirsiniz
+        quote.style.fontSize = `${fontSize}px`;
+      });
+    });
+  </script>
+</body>
+</html>

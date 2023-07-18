@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+ 
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 40%;
+      height: 500px;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .div{
+      display: flex;
+    }
+    @media (max-width: 1060px) {
+      .swiper-button-next {
+        right: 20px;
+        transform: rotate(90deg);
+      }
+
+      .swiper-button-prev {
+        left: 20px;
+        transform: rotate(90deg);
+      }
+    }
+    .div1,
+    .div2 {
+      width: 100%;
+      height: 700px;
+    }
+  
+  </style>
+</head>
+
+<body>
+  <div class="div1" id="div1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quia laboriosam aperiam obcaecati tempore libero ratione. Praesentium aliquid id corporis reprehenderit odio rem sit illum? Vitae magnam, in at ipsam, maiores officiis dolorem, quaerat beatae totam facilis doloremque tempora ipsum quis autem repellendus? Autem quasi, sunt sapiente architecto optio officiis corrupti molestias alias qui. Adipisci mollitia, cumque minima numquam, beatae id assumenda fugit ex magnam esse odit consequuntur. Quisquam exercitationem aspernatur autem sequi, nesciunt tempora. Nam quasi asperiores pariatur unde, reprehenderit similique eligendi, voluptatum impedit explicabo dignissimos ex, harum laboriosam perspiciatis aut aspernatur iste repellendus neque quos! Ad, cum fugiat.</div>
+  <!-- Swiper -->
+  <div class="div-slider" style="display: flex;">
+  
+  <div class="swiper mySwiper1">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><span>Resize me1!</span></div>
+      <div class="swiper-slide"><span>Resize me!2</span></div>
+      <div class="swiper-slide"><span>Resize me3!</span></div>
+      <div class="swiper-slide"><span>Resize me!4</span></div>
+      <div class="swiper-slide"><span>Resize me5!</span></div>
+      <div class="swiper-slide"><span>Resize me6!</span></div>
+      <div class="swiper-slide"><span>Resize me7!</span></div>
+      <div class="swiper-slide"><span>Resize me8!</span></div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww&w=1000&q=80" alt=""></div>
+      <div class="swiper-slide"><img src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp" alt=""></div>
+      <div class="swiper-slide"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/ba/29/5c/img-worlds-of-adventure.jpg?w=1200&h=-1&s=1" alt=""></div>
+      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww&w=1000&q=80" alt=""></div>
+      <div class="swiper-slide"><img src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp" alt=""></div>
+      <div class="swiper-slide"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/ba/29/5c/img-worlds-of-adventure.jpg?w=1200&h=-1&s=1" alt=""></div>
+      <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww&w=1000&q=80" alt=""></div>
+      <div class="swiper-slide"><img src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp" alt=""></div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+</div>
+<div class="div2" id="div2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis aspernatur libero dicta nihil laboriosam magnam ratione nisi, aliquam molestiae expedita, sequi fugiat. Suscipit, praesentium magni velit excepturi aliquam, quaerat atque porro corrupti nemo ea repudiandae nam placeat error, quos ipsa voluptatem quasi corporis iste blanditiis alias. Veritatis quidem sapiente pariatur vitae culpa non, qui harum dolore rem! Cumque facilis quam dignissimos similique corrupti eligendi. Vero laborum esse tempora sapiente suscipit? Ea a omnis doloremque. Sed non perferendis ab eligendi quasi, tenetur mollitia fugiat rerum praesentium voluptatem at aperiam reiciendis similique eos neque amet. Cumque ad cum fugit voluptas qui sunt.</div>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var swiper = new Swiper(".mySwiper", {
+      // slidesPerView: 3,
+      // initialSlide: 0,
+      // centeredSlides: true,
+      direction: "vertical",
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+     
+      keyboard: {
+        enabled: true,
+      },
+      speed: 0,
+      on: {
+    // slideChangeTransitionStart: function () {
+    //   this.params.speed = 0;
+    // },
+    // slideChangeTransitionEnd: function () {
+    //   this.params.speed = 0; 
+    // },
+    slideChange: function () {
+      var currentSlide = this.realIndex;
+      if (currentSlide === 0) {
+        var targetSection = document.getElementById('div1');
+        var targetOffset = targetSection.offsetTop; // Diğer bölümün sayfada olan pozisyonunu alın
+        window.scrollTo({ top: targetOffset, behavior: 'smooth' }); // Scroll işlemini gerçekleştirin
+      }
+    }
+  },
+    });
+    var swiper1 = new Swiper('.mySwiper1', {
+      slidesPerView: 3,
+      initialSlide: 0,
+      // loop: true,
+  centeredSlides: true,
+      direction: 'vertical',
+    //    getDirection(),
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      
+      keyboard: {
+        enabled: true,
+      },
+      speed: 500, 
+ 
+      
+    });
+    
+    swiper.allowSlidePrev = true;
+    swiper.allowSlideNext = true;
+    swiper1.allowSlidePrev = true;
+    swiper1.allowSlideNext = true;
+ 
+    })
+  </script>
+</body>
+
+</html>

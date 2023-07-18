@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link  rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+<style>
+   .swiper-container {
+  width: 100%;
+  height: 400px;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  text-align: center;
+}
+
+.swiper-slide h3 {
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+.swiper-slide p {
+  margin-bottom: 20px;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="div" style="display: flex;">
+    <div class="swiper-container">
+      <div class="swiper-wrapper" >
+        <div class="swiper-slide" >
+          <h3>Title 1</h3>
+          <p>Description 1</p>
+        </div>
+        <div class="swiper-slide" >
+          <h3>Title 2</h3>
+          <p>Description 2</p>
+        </div>
+        <div class="swiper-slide" >
+          <h3>Title 3</h3>
+          <p>Description 3</p>
+        </div>
+        <!-- Diğer yazılı slaytlar buraya eklenebilir -->
+      </div>
+    </div>
+    
+    <div class="swiper-container">
+      <div class="swiper-wrapper" >
+        <div class="swiper-slide" >
+          <img width="200px" height="300px" src="https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/11/udHvbKwV-IMG-Dubai-UAE-1-1200x800.jpg" alt="Image 1">
+        </div>
+        <div class="swiper-slide" style="width: 200px; height: 300px;">
+          <img width="200px" height="300px" src="https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/11/udHvbKwV-IMG-Dubai-UAE-1-1200x800.jpg" alt="Image 2">
+        </div>
+        <div class="swiper-slide" style="width: 200px; height: 300px;">
+          <img width="200px" height="300px" src="https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/11/udHvbKwV-IMG-Dubai-UAE-1-1200x800.jpg" alt="Image 3">
+        </div>
+        <!-- Diğer resimli slaytlar buraya eklenebilir -->
+      </div>
+    </div>
+    </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      var swiperText = new Swiper('.swiper-container:first-child', {
+  slidesPerView: 'auto',
+  direction: 'vertical',
+  freeMode: true,
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    hide: true,
+  },
+  autoplay: {
+    delay: 5000,
+  },
+});
+
+var swiperImages = new Swiper('.swiper-container:last-child', {
+  slidesPerView: 'auto',
+  direction: 'vertical',
+  freeMode: true,
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    hide: true,
+  },
+  autoplay: {
+    delay: 5000,
+  },
+});
+
+// İki slider'ı senkronize etme
+swiperText.controller.control = swiperImages;
+swiperImages.controller.control = swiperText;
+
+
+    </script>
+</body>
+</html>
