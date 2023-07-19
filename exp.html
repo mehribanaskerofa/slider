@@ -17,7 +17,7 @@
     }
 
     body {
-      background: #eee;
+      /* background: #eee; */
       font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
       font-size: 14px;
       color: #000;
@@ -67,9 +67,13 @@
       }
     }
     .div1,
-    .div2 {
+    .div2{
       width: 100%;
-      height: 2000px;
+      height: 600px;
+    }
+    #div3 {
+      width: 100%;
+      height: 200px;
     }
   .home-benefit-head-title{
     position: absolute;
@@ -79,6 +83,16 @@
     line-height: 2rem;
     color: #f6d1c0;
   }
+  .swiper-slide-active{
+    height: 220px;
+  }
+  .swiper-slide-active .home-benefit-head-context-title{
+        opacity: 1;
+        font-size: 40px;
+      }
+      .swiper-slide-active .home-benefit-head-context-title-text{
+        visibility: visible;
+      }
   .home-benefit-head-context-title{
     font-size: 20px;
     /* line-height: 4.9rem; */
@@ -87,12 +101,14 @@
     transition: all .3s ease;
     width: 200px;
     padding: 30px 0 10px 0;
+    opacity: 0.3;
   }
   .home-benefit-head-context-title-text{
     font-size: 14px;
     line-height: 1.6rem;
     color: #8d939d;
     transition: all .3s ease;
+    visibility: hidden;
   }
   .home-benefit-head-context{
     padding-left: 20px;
@@ -111,9 +127,12 @@
       /* width: 40%; */
       height: 450px;
     }
+    .swiper-slide-active {
+        
+      }
     .home-benefits .swiper:last-child {
       /* width: 40%; */
-      height: 700px;
+      height: 440px;
     }
   .home-benefits-image-slider {
       /* width: 50%; */
@@ -132,17 +151,21 @@
     object-fit: cover;
     border-radius: 20px;
   }
+  .home-benefits-text-slider-item{
+    height: 200px;
+  }
   </style>
 </head>
 
 <body>
    
-
+<div class="div1"></div>
   
   <div class="home-benefits" >
   <div class="swiper home-benefits-text-slider">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
+        <div class="home-benefits-text-slider-item">
         <div class="home-benefit-head">
           <span class="home-benefit-head-title">01</span>
           <div class="home-benefit-head-context">
@@ -150,8 +173,10 @@
               <div class="home-benefit-head-context-title-text"><span>С кухнями-гостиными для семьи и гостей</span></div>
           </div>
         </div>
+        </div>
       </div>
       <div class="swiper-slide">
+        <div class="home-benefits-text-slider-item">
         <div class="home-benefit-head">
           <span class="home-benefit-head-title">02</span>
           <div class="home-benefit-head-context">
@@ -159,8 +184,10 @@
               <div class="home-benefit-head-context-title-text"><span>С кухнями-гостиными для семьи и гостей</span></div>
           </div>
         </div>
+        </div>
       </div>
       <div class="swiper-slide">
+        <div class="home-benefits-text-slider-item">
         <div class="home-benefit-head">
           <span class="home-benefit-head-title">03</span>
           <div class="home-benefit-head-context">
@@ -168,8 +195,10 @@
               <div class="home-benefit-head-context-title-text"><span>С кухнями-гостиными для семьи и гостей</span></div>
           </div>
         </div>
+        </div>
       </div>
       <div class="swiper-slide">
+        <div class="home-benefits-text-slider-item">
         <div class="home-benefit-head">
           <span class="home-benefit-head-title">04</span>
           <div class="home-benefit-head-context">
@@ -178,7 +207,9 @@
           </div>
         </div>
       </div>
+    </div>
       <div class="swiper-slide">
+        <div class="home-benefits-text-slider-item">
         <div class="home-benefit-head">
           <span class="home-benefit-head-title">05</span>
           <div class="home-benefit-head-context">
@@ -186,9 +217,10 @@
               <div class="home-benefit-head-context-title-text"><span>С кухнями-гостиными для семьи и гостей</span></div>
           </div>
         </div>
+        </div>
       </div>
     </div>
-    
+    <!-- <div class="swiper-scrollbar"></div> -->
     <!-- <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div> -->
   </div>
@@ -207,22 +239,31 @@
       <div class="swiper-slide">
         <img src="https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww&w=1000&q=80" alt="">
       </div>
-      
+      <div class="swiper-slide">
+        <img src="https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp" alt="">
+      </div>
     </div>
     <!-- <div class="swiper-pagination"></div> -->
   </div>
+  </div>
 
-
-  <!-- Swiper JS -->
+<div id="div3" ></div>
+  
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
-  <!-- Initialize Swiper -->
   <script>
+
+
+
+window.addEventListener("load", function () {
+
     var swiper = new Swiper(".home-benefits-image-slider", {
       // slidesPerView: 3,
-      initialSlide: 1,
+      initialSlide: 0,
       // centeredSlides: true,
       direction: "vertical",
+      freeMode: true, // Serbest modda kaydırma
+  freeModeSticky: true,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -243,76 +284,73 @@
     });
     var swiper1 = new Swiper('.home-benefits-text-slider', {
       slidesPerView: 3,
+      direction: 'horizontal',
       // initialSlide: 1,
       // loop: true,
+      freeMode: true, 
+  freeModeSticky: true,
   centeredSlides: true,
       direction: 'vertical',
-    //    getDirection(),
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
-      
       keyboard: {
         enabled: true,
       },
-      speed: 500, // Set the desired transition speed for swiper1 (e.g., 500ms)
- 
-      
+      speed: 500,
     });
-
-    // function getDirection() {
-    //   var windowWidth = window.innerWidth;
-    //   var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
-
-    //   return direction;
-    // }
-
-    // const quoteContainer = document.querySelector('.mySwiper1 .swiper-wrapper');
-    // const quotes = quoteContainer.querySelectorAll('.mySwiper1  span');
-
-    // quoteContainer.addEventListener('scroll', function () {
-    //   quotes.forEach((quote) => {
-    //     // const scrollPercentage = quoteContainer.scrollTop / (quoteContainer.scrollHeight - quoteContainer.clientHeight);
-    //     // const fontSize = 60 + scrollPercentage * 10;
-    //     quote.style.fontSize = '40px';
-    //     // `${fontSize}px`;
-    //   });
-    // });
-
+    
+  })
     // swiper.controller.control = swiper1;
     // swiper1.controller.control = swiper;
-//    window.addEventListener("scroll", function() {
-//   // Your logic to detect scroll and change the active slider
 
-//   // For example, if you want to switch to swiper1 when scrolling down
-//   if (window.scrollY > 800000) {
-//     swiper.controller.control = null; // Disconnect swiper from controlling swiper1
-//     swiper1.controller.control = swiper; // Connect swiper1 to control swiper
-//   } else {
-//     swiper.controller.control = swiper1; // Connect swiper to control swiper1
-//     swiper1.controller.control = null; // Disconnect swiper1 from controlling swiper
-//   }
-// });
+  
+
+    var section = document.querySelector ('#div3');//catanda
+ var div_1 = document.querySelector('.div1');//olacaq
+
+ function handleScroll() {
+   var sectionRect = section.getBoundingClientRect();
+   if (sectionRect.top < window.innerHeight && sectionRect.bottom >= 0) {
+    swiper.params.keyboard.enabled = true;
+    swiper1.params.keyboard.enabled = true;
+    div_1.style.backgroundColor='red'
+    
+   } else {
+    swiper.params.keyboard.enabled = false;
+    console.log(swiper.params.keyboard.enabled)
+    swiper1.params.keyboard.enabled = false;
+    div_1.style.backgroundColor='black'
+   }
+ }
+
+ document.addEventListener('scroll', handleScroll);
 
 
     swiper1.on('slideChange', function (e) {
       var activeSlide = swiper1.slides[swiper1.activeIndex];
+      // var matherdiv = activeSlide.querySelector('.home-benefits-text-slider-item');
+      activeSlide.style.height='220px'
   var span = activeSlide.querySelector('.home-benefit-head-context-title');
   span.style.fontSize = '40px';
+  span.style.opacity = 1;
   var all_div = activeSlide.querySelector('.home-benefit-head');
   all_div.style.opacity = 1;
   // all_div.style.margin='20px 0px';
   var all_div_text = activeSlide.querySelector('.home-benefit-head-context-title-text');
   all_div_text.style.visibility = 'visible';
-  all_div_text.style.marginBottom = '300px';
+  // all_div_text.style.marginBottom = '300px';
   var all_div_swiper = activeSlide.querySelector('.home-benefits-text-slider .swiper-slide');
   // all_div_swiper.style.margin='0px 0px';
 
 
   var previousSlide = swiper1.slides[swiper1.previousIndex];
+  // var matherdiv = previousSlide.querySelector('.home-benefits-text-slider-item');
+  previousSlide.style.height='150px'
   var previousSpan = previousSlide.querySelector('.home-benefit-head-context-title');
   previousSpan.style.fontSize = '20px';
+  previousSpan.style.opacity = 0.3;
   var all_div_some = previousSlide.querySelector('.home-benefit-head');
   all_div_some.style.opacity = 0.3;
   // all_div_some.style.margin='0px 0px';
@@ -322,15 +360,6 @@
   // all_div_swiper1.style.margin='30px 0px';
   
 });
-// swiper1.on('slideChangeTransitionEnd', function () {
-//   var previousSlide = swiper1.slides[swiper1.previousIndex];
-//   var previousSpan = previousSlide.querySelector('span');
-//   previousSpan.style.fontSize = '24px';
-// });
-
-// swiper2.on('slideChange', function () {
-//   swiper1.slideTo(swiper2.activeIndex);
-// });
 
   </script>
 </body>
