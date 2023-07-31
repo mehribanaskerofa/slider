@@ -188,7 +188,7 @@
 
 <body>
    
-<div class="div1"></div>
+<div class="div1" id="div1"></div>
  
   <div class="home-benefits" id="home-benefits">
   <div class="swiper home-benefits-text-slider">
@@ -290,241 +290,49 @@
   <script>
 
 
-
-    var swiper = new Swiper(".home-benefits-image-slider", {
-      slidesPerView: 1,
-      initialSlide: 0,
-      centeredSlides: true,
-      direction: "vertical",
-      freeMode: true, // Serbest modda kaydırma
-  freeModeSticky: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-     
-      keyboard: {
-        enabled: true,
-      },
-      speed: 0, // Set the desired transition speed for swiper1 (e.g., 500ms)
-      allowTouchMove: false,
-      mousewheel: {
-        enabled: true,
-        // invert: true, // Ters yönde kaydırmak için
-      },
-
-      // Fare tekerleğini kullanarak kaydırma işlemindeki minimum kaydırma mesafesini ayarlayalım
-      mousewheelSnap: {
-        // threshold: 600, // Kaydırma mesafesi, arttıkça daha az hassas olur
-      },
-      900: {
-        allowSlideNext: true,
-        allowSlidePrev: true,
-        allowTouchMove: true,
-    },
-      // Fare tekerleği kaydırma işlemini yavaşlatmak için süreyi ayarlayalım
-      mousewheelInertia: 800, 
-      on: {
-    slideChangeTransitionStart: function () {
-      this.params.speed = 0; 
-    },
-    slideChangeTransitionEnd: function () {
-      this.params.speed = 0; // Reset the speed back to the original value after the transition ends
-    },
-  },
-    });
-    var swiper1 = new Swiper('.home-benefits-text-slider', {
-      slidesPerView: 1,
-      direction: 'horizontal',
-      initialSlide: 0,
-      // loop: true,
-      
-      freeMode: true, 
-  freeModeSticky: true,
+var swiperText = new Swiper(".home-benefits-image-slider", {
+  slidesPerView: 1,
+  initialSlide: 0,
   centeredSlides: true,
-      // direction: 'vertical',
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      keyboard: {
-        enabled: true,
-      },
-      speed: 500,
-      allowTouchMove: false,
-      
-      mousewheel: {
-        enabled: true,
-        // invert: true, // Ters yönde kaydırmak için
-      },
-  //     breakpoints: {
-    900: {
-        allowSlideNext: true,
-        allowSlidePrev: true,
-        allowTouchMove: true,
-    },
-      // Fare tekerleğini kullanarak kaydırma işlemindeki minimum kaydırma mesafesini ayarlayalım
-      mousewheelSnap: {
-        // threshold: 600, // Kaydırma mesafesi, arttıkça daha az hassas olur
-      },
+  direction: "vertical",
 
-      // Fare tekerleği kaydırma işlemini yavaşlatmak için süreyi ayarlayalım
-      mousewheelInertia: 800, 
-      
-    });
-
-  swiper1.on('slideChangeTransitionStart', function() {
-    if (swiper1.activeIndex > swiper.activeIndex) {
-      swiper.slideNext(); // swiper1 ileri gittiğinde, swiper da ileri gitsin
-    } else if (swiper1.activeIndex < swiper.activeIndex) {
-      swiper.slidePrev(); // swiper1 geri gittiğinde, swiper da geri dönsün
-    }
-    });
-    window.addEventListener("wheel", function(event) {
-    if (event.deltaY > 0) {
-        console.log(event.deltaY);
-        swiper.slideNext();
-        // swiper1.slideNext();
-        // Burada başka bir işlem yapılabilir.
-    } else if (event.deltaY < 0) {
-        console.log(event.deltaY);
-        swiper.slidePrev(); 
-        // swiper1.slidePrev(); 
-        // Burada başka bir işlem yapılabilir.
-    }
-});
-var istrueslider=false
-swiper.on('slideChangeTransitionStart', function() {
-  if(istrueslider){
-  if (swiper.activeIndex > swiper1.activeIndex) {
-    swiper1.slideNext(); // swiper ileri gittiğinde, swiper1 da ileri gitsin
-  } else if (swiper.activeIndex < swiper1.activeIndex) {
-    swiper1.slidePrev(); // swiper geri gittiğinde, swiper1 da geri dönsün
-  }
-}
-});
-// window.addEventListener('scroll', function (event) {
-//     // Slaytın başlangıç ​​pozisyonuna geri dönmesini engellemek için
-//     // herhangi bir pencere kaydırma olayında slaytı sıfırlama
-
-//     swiper.slideTo(0, 0);
-//   });
-
-
-
-window.addEventListener('scroll', function() {
-  // "home-benefits" elementini seçin
-  var homeBenefitsElement = document.getElementById('home-benefits');
-  
-  // "div1" elementini seçin
-  var div1Element = document.querySelector('.div1');
-  var div2Element = document.querySelector('#div2');
-  // "home-benefits" bölümünün sayfa içindeki yüksekliğini alın
-  var homeBenefitsHeight = homeBenefitsElement.getBoundingClientRect().height;
-  console.log(document.querySelector('#div3').offsetHeight,window.innerHeight)
-  // Sayfanın scroll pozisyonunu alın
-  var scrollPosition = window.scrollY;
-  
-  // Sayfa görüntülenen yükseklik
-  var viewportHeight = window.innerHeight;
-  
-  // "home-benefits" bölümünün ekran içinde göründüğü durumu kontrol edin
-  // var homeBenefitsVisible = scrollPosition + viewportHeight >= homeBenefitsElement.offsetTop;
-  var isHomeBenefitsVisible = (window.innerHeight + window.scrollY) >= homeBenefitsElement.offsetTop + homeBenefitsHeight;
-  
-  // "home-benefits" bölümü tamamen göründüğü durumda div1'in rengini değiştirin (Örn: Mavi renk)
-  if (isHomeBenefitsVisible) {
-    div1Element.style.backgroundColor = 'blue'; // Renk değişimi için istediğiniz renk değerini kullanabilirsiniz
-    div2Element.style.backgroundColor = 'blue';
-  } else {
-    // "home-benefits" bölümü tamamen görünmediği durumlarda başlangıç rengine geri çevirin (Örn: Kırmızı renk)
-    div1Element.style.backgroundColor = 'red'; // Başlangıçta varsayılan renk değerini kullanabilirsiniz
-    div2Element.style.backgroundColor = 'red';
-  }
 });
 
-  if (swiper1.isEnd) {
-      div2Element.style.backgroundColor = 'black';
-    }
-    // swiper.controller.control = swiper1;
-    // swiper1.controller.control = swiper;
+var swiperImage = new Swiper('.home-benefits-text-slider', {
+  slidesPerView: 1,
+  direction: 'vertical',
+  initialSlide: 0,
 
-  
-
-      var section = document.querySelector ('#div3');//catanda
-      var div_1 = document.querySelector('.div1');//olacaq
-
-//  function handleScroll() {
-//    var sectionRect = section.getBoundingClientRect();
-//    console.log(sectionRect.top,sectionRect.bottom)
-
-//    if (sectionRect.top < window.innerHeight && sectionRect.bottom >= 0) {
-//      div_1.style.backgroundColor='red';
-//      swiper.slideNext(); 
-//           swiper1.slideNext(); 
-//    } else {
-//     div_1.style.backgroundColor='yellow';
-//     swiper.slidePrev(); 
-//           swiper1.slidePrev(); 
-//    }
-//  }
-
-//  document.addEventListener('scroll', handleScroll);
- 
- document.addEventListener("keydown", function (event) {
-  var sectionRect = section.getBoundingClientRect();
-      // Sağ ok tuşuna basıldığında
-      if (sectionRect.height < window.innerHeight && sectionRect.bottom >= 0) {
-      if (event.key === "ArrowUp") {
-        // swiper.slidePrev();
-        swiper1.slidePrev();
-      }
-      // Sol ok tuşuna basıldığında
-      else if (event.key === "ArrowDown") {
-        
-        // swiper.slideNext();
-        swiper1.slideNext();
-      }
-    }
-
-    });
-
-
-    swiper1.on('slideChange', function (e) {
-      var activeSlide = swiper1.slides[swiper1.activeIndex];
-      // var matherdiv = activeSlide.querySelector('.home-benefits-text-slider-item');
-      // activeSlide.style.height='350px'
-  var span = activeSlide.querySelector('.home-benefit-head-context-title');
-  span.style.fontSize = '40px';
-  span.style.opacity = 1;
-  var all_div = activeSlide.querySelector('.home-benefit-head');
-  all_div.style.opacity = 1;
-  // all_div.style.margin='20px 0px';
-  var all_div_text = activeSlide.querySelector('.home-benefit-head-context-title-text');
-  all_div_text.style.visibility = 'visible';
-  // all_div_text.style.marginBottom = '300px';
-  var all_div_swiper = activeSlide.querySelector('.home-benefits-text-slider .swiper-slide');
-  // all_div_swiper.style.margin='0px 0px';
-
-
-  var previousSlide = swiper1.slides[swiper1.previousIndex];
-  // var matherdiv = previousSlide.querySelector('.home-benefits-text-slider-item');
-  // previousSlide.style.height='150px'
-  var previousSpan = previousSlide.querySelector('.home-benefit-head-context-title');
-  previousSpan.style.fontSize = '20px';
-  previousSpan.style.opacity = 0.3;
-  var all_div_some = previousSlide.querySelector('.home-benefit-head');
-  all_div_some.style.opacity = 0.3;
-  // all_div_some.style.margin='0px 0px';
-  var all_div_text1 = previousSlide.querySelector('.home-benefit-head-context-title-text');
-  all_div_text1.style.visibility = 'hidden';
-  var all_div_swiper1 = previousSlide.querySelector('.home-benefits-text-slider .swiper-slide');
-  // all_div_swiper1.style.margin='30px 0px';
-  
 });
 
+ swiperText.on("slideChange", function () {
+        const activeIndex = swiperText.activeIndex;
+        swiperImage.slideTo(activeIndex); 
+      });
+    
+      swiperImage.on("slideChange", function () {
+        const activeIndex = swiperImage.activeIndex; 
+        swiperText.slideTo(activeIndex); 
+      });
+    
+      var sliderContainer = document.querySelector('.home-benefits');
+    sliderContainer.addEventListener('wheel', function (event) {
+    event.preventDefault();
+    var direction = event.deltaY > 0 ? 'next' : 'prev';
 
+    if ((direction === 'next' && swiperText.isEnd) ) {
+      document.getElementById('div3').scrollIntoView({ behavior: 'smooth' });
 
+    }
+    else if((direction === 'prev' && swiperText.isBeginning)){
+        document.getElementById('div1').scrollIntoView({ behavior: 'smooth' });
+
+    }
+     else {
+      swiperText.slideTo(swiperText.activeIndex + (direction === 'next' ? 1 : -1));
+
+    }
+  });
 
 </script>
 </body>
